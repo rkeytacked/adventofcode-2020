@@ -105,8 +105,12 @@ class ObjectSet extends Set {
 
     add(elem) {
         let k = key(elem);
+        if (this.values.has(k)) {
+            return false;
+        }
         this.values.set(k, elem);
-        return super.add(k);
+        super.add(k);
+        return true;
     }
 
     delete(elem) {
